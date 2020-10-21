@@ -1,12 +1,12 @@
 import React from 'react';
-import { createContainer, Element } from './helpers';
+import { createContainer, Element, Elements } from './helpers';
 import { Categories } from '../src/features/categories/Categories';
 
-describe('Category', () => {
-  let element: Element, render;
+describe('Categories', () => {
+  let element: Element, elements: Elements, render;
 
   beforeEach(() => {
-    ({ element, render } = createContainer());
+    ({ element, elements, render } = createContainer());
   });
   
   it('renders a div with the right class name', () => {
@@ -20,5 +20,17 @@ describe('Category', () => {
 
     expect(element('ul')).not.toBeNull();
     expect(element('ul').children).toHaveLength(6);
+  });
+
+  it('renders each category in an li', () => {
+    render(<Categories />);
+
+    expect(elements('li')).toHaveLength(6);
+    expect(elements('li')[0].textContent).toEqual('films');
+    expect(elements('li')[1].textContent).toEqual('people');
+    expect(elements('li')[2].textContent).toEqual('planets');
+    expect(elements('li')[3].textContent).toEqual('species');
+    expect(elements('li')[4].textContent).toEqual('starships');
+    expect(elements('li')[5].textContent).toEqual('vehicles');
   });
 })
