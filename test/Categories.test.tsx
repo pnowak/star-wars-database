@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactTestUtils from 'react-dom/test-utils';
 import { createContainer, Element, Elements } from './helpers';
 import { Categories } from '../src/features/categories/Categories';
 
@@ -32,5 +33,25 @@ describe('Categories', () => {
     expect(elements('li')[3].textContent).toEqual('species');
     expect(elements('li')[4].textContent).toEqual('starships');
     expect(elements('li')[5].textContent).toEqual('vehicles');
+  });
+
+  it('selects the first category by default', () => {
+    render(<Categories />);
+
+    const firstCategory = elements('li')[0];
+
+    expect(firstCategory.className).toEqual('active');
+  });
+
+  it('adds active class to li when selected', () => {
+    render(<Categories />);
+
+    const firstCategory = elements('li')[0];
+    const secondCategory = elements('li')[1];
+    
+    ReactTestUtils.Simulate.click(secondCategory);
+
+    expect(firstCategory.className).toMatch('');
+    expect(secondCategory.className).toMatch('active');
   });
 })

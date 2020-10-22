@@ -1,6 +1,6 @@
-import React, { ReactElement } from 'react';
+import React, { BaseSyntheticEvent, ReactElement, useState } from 'react';
 
-const categoriesList = [
+const categoryList = [
   'films',
   'people',
   'planets',
@@ -10,11 +10,14 @@ const categoriesList = [
 ];
 
 export const Categories = () : ReactElement => {
+  const [activeCategory, setActiveCategory] = useState(0);
+
   return (
     <div className="category-list">
       <ul>
-        {categoriesList.map(category => (
-          <li key={category}>
+        {categoryList.map((category, index) => (
+          <li key={category} className={index === activeCategory ? 'active' : ''}
+            onClick={() => setActiveCategory(index)}>
             <span>{category}</span>
           </li>
         ))}
