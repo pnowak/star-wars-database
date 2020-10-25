@@ -22,12 +22,12 @@ export type FilmAttributes = {
     vehicles: CommonAttributes[],
 }
 
-type Film = {
+export type Film = {
     hasNext: string | null,
     data: FilmAttributes[]
 };
 
-type Common = {
+export type Common = {
     hasNext: string | null,
     data: CommonAttributes[]
 }
