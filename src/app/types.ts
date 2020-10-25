@@ -1,7 +1,7 @@
 export const FETCH_ALL_REQUEST = 'FETCH_ALL_REQUEST';
 export const FETCH_ALL_STARTED = 'FETCH_ALL_STARTED';
 export const FETCH_ALL_SUCCEEDED = 'FETCH_ALL_SUCCEEDED';
-export const FETCH_ALL_FAILED = 'FETCH_ALL_FAILED';
+export const FETCH_FAILED = 'FETCH_FAILED';
 
 export type CommonAttributes = {
     name: string,
@@ -22,42 +22,39 @@ export type FilmAttributes = {
     vehicles: CommonAttributes[],
 }
 
-type Films = {
+type Film = {
     hasNext: string | null,
     data: FilmAttributes[]
 };
 
-type Rest = {
+type Common = {
     hasNext: string | null,
     data: CommonAttributes[]
 }
 
-export type Filter = 'all' | 'films' | 'people' | 'planets' | 'species' | 'starships' | 'vehicles';
-
-export type AppState = {
+export type FetchState = {
     error: null | string,
-    filter: Filter,
     isLoading: boolean,
     status: 'STARTED' | 'SUCCESSFUL'| 'FAILED' | '',
-    films: Films,
-    people: Rest,
-    planets: Rest,
-    species: Rest,
-    starships: Rest,
-    vehicles: Rest
+    films: Film,
+    people: Common,
+    planets: Common,
+    species: Common,
+    starships: Common,
+    vehicles: Common
 };
 
 export type Action =  {
-    type: typeof FETCH_ALL_STARTED | typeof FETCH_ALL_STARTED | typeof FETCH_ALL_SUCCEEDED | typeof FETCH_ALL_FAILED;
+    type: typeof FETCH_ALL_STARTED | typeof FETCH_ALL_SUCCEEDED | typeof FETCH_FAILED;
     status: string,
     isLoading: boolean,
     payload: { 
-        films: Films,
-        people: Rest,
-        planets: Rest,
-        species: Rest,
-        starships: Rest,
-        vehicles: Rest,
+        films: Film,
+        people: Common,
+        planets: Common,
+        species: Common,
+        starships: Common,
+        vehicles: Common,
         error: string
     }
 };

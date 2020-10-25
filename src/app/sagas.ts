@@ -1,5 +1,5 @@
 import { put, all, call } from 'redux-saga/effects';
-import { FETCH_ALL_STARTED, FETCH_ALL_SUCCEEDED, FETCH_ALL_FAILED } from './types';
+import { FETCH_ALL_STARTED, FETCH_ALL_SUCCEEDED, FETCH_FAILED } from './types';
 import { SagaIterator } from '@redux-saga/core';
 
 const fetchJSON = async (input: string) => {
@@ -9,7 +9,7 @@ const fetchJSON = async (input: string) => {
   return data;
 };
 
-export function* fetchAll():SagaIterator {
+export function* fetchAll(): SagaIterator {
   yield put({ type: FETCH_ALL_STARTED });
 
   try {
@@ -53,8 +53,9 @@ export function* fetchAll():SagaIterator {
     })
 
   } catch(error) {
+
     yield put({
-      type: FETCH_ALL_FAILED,
+      type: FETCH_FAILED,
       payload: { error: error.message } 
     })
   }

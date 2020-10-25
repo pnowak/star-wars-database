@@ -10,6 +10,7 @@ export function createDetails(state: FilmAttributes | CommonAttributes): detail[
 
   for (key in state) {
     const value = state[key];
+    console.log(value, Array.isArray(value));
       
     result.push({[key]: value});
   }

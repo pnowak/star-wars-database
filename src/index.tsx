@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Categories } from './features/categories/Categories';
+import { Provider } from 'react-redux';
+import { App } from './app/App';
+import { configureStore } from './app/store';
 
 ReactDOM.render(
-  <Categories />,
+  <Provider store={configureStore()}>
+    <App />
+  </Provider>, 
   document.getElementById('root')
 );

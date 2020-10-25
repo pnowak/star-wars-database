@@ -1,13 +1,12 @@
 import { 
   FETCH_ALL_STARTED,
   FETCH_ALL_SUCCEEDED,
-  FETCH_ALL_FAILED,
-  AppState,
+  FETCH_FAILED,
+  FetchState,
   Action } from './types';
 
-const initialState: AppState = {
+export const fetchState: FetchState = {
   error: null,
-  filter: 'all',
   isLoading: false,
   status: '',
   films: {
@@ -36,7 +35,7 @@ const initialState: AppState = {
   },
 };
 
-export const rootReducer = (state = initialState, action: Action): AppState => {
+export const fetchReducer = (state = fetchState, action: Action): FetchState => {
   const { type, payload } = action;
 
   switch (type) {
@@ -60,7 +59,7 @@ export const rootReducer = (state = initialState, action: Action): AppState => {
         vehicles: payload.vehicles
       };
     }
-    case FETCH_ALL_FAILED: {
+    case FETCH_FAILED: {
       return {
         ...state,
         isLoading: false,
@@ -74,4 +73,4 @@ export const rootReducer = (state = initialState, action: Action): AppState => {
   }
 };
 
-export type RootState = ReturnType<typeof rootReducer>
+export type FetchedState = ReturnType<typeof fetchReducer>

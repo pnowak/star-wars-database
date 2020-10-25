@@ -1,17 +1,16 @@
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, BrowserRouter as Router, Route, useLocation } from 'react-router-dom';
-import { FETCH_ALL_REQUEST } from '../../app/types';
-import { RootState } from '../../app/rootReducer';
-import { FilmAttributes, CommonAttributes } from '../../app/types';
+import { FETCH_ALL_REQUEST, FilmAttributes, CommonAttributes } from '../../app/types';
+import { RootState } from '../../app/index';
 import { Card } from '../../common/Card';
 import { createDetails } from '../../common/createDetails';
 import { Error } from '../../common/Error';
 import { Loading } from '../../common/Loading';
 
 export const Gallery = (): ReactElement => {
-  const {films, people, planets, species, starships, vehicles} = useSelector((state: RootState) => state.data);
-  const { isLoading, error, filter} = useSelector((state: RootState) => state);
+  const {films, people, planets, species, starships, vehicles, isLoading, error} = useSelector((state: RootState) => state.films);
+  const { filter } = useSelector((state: RootState) => state)
   console.log(filter);
 
   const dispatch = useDispatch();
