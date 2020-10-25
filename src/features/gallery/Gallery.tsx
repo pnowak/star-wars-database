@@ -10,8 +10,7 @@ import { Loading } from '../../common/Loading';
 
 export const Gallery = (): ReactElement => {
   const {films, people, planets, species, starships, vehicles, isLoading, error} = useSelector((state: RootState) => state.films);
-  const { filter } = useSelector((state: RootState) => state)
-  console.log(filter);
+  const { filter } = useSelector((state: RootState) => state);
 
   const dispatch = useDispatch();
 
