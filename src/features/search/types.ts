@@ -8,20 +8,20 @@ type ResultObject = {
     count: number,
     next: string | null,
     previous: string | null,
-    results: CommonAttributes[] | FilmAttributes[]
+    results: CommonAttributes[] | FilmAttributes[] | []
 };
 
 export type SearchState = {
     error: null | string,
     isLoading: boolean,
     status: 'SEARCH_STARTED' | 'SEARCH_SUCCESSFUL'| 'SEARCH_FAILED' | '',
-    result: ResultObject | null
+    result: ResultObject
 };
 
 export type SearchAction =  {
     type: typeof FETCH_SEARCH_REQUEST | typeof FETCH_SEARCH_SUCCEEDED | typeof FETCH_SEARCH_FAILED;
     status: string,
     isLoading: boolean,
-    result: ResultObject | null
+    result: ResultObject
     error: string
 };

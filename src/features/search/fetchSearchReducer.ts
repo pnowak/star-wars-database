@@ -8,12 +8,16 @@ export const fetchState: SearchState = {
   error: null,
   isLoading: false,
   status: '',
-  result: null,
+  result: {
+    count: 0,
+    next: null,
+    previous: null,
+    results: []
+  },
 };
 
 export const fetchSearchReducer = (state = fetchState, action: SearchAction): SearchState => {
   const { type } = action;
-  console.log(type, action);
 
   switch (type) {
     case FETCH_SEARCH_SUCCEEDED: {

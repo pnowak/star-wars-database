@@ -1,6 +1,6 @@
 import React, { BaseSyntheticEvent, ReactElement, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../app';
+import { RootState } from '../../app/rootReducers';
 import { createDetails } from '../../common/createDetails';
 import { FETCH_SEARCH_REQUEST } from './types';
 
@@ -17,7 +17,7 @@ export const Search = (): ReactElement => {
   const { search } = useSelector((state: RootState) => state);
   const [selectedCategory, setSelectedCategory] = useState(selectableCategories[0]);
   const [searchTerm, setSearchTerm] = useState('');
-  console.log(search.result && search.result.results);
+  const [isShow, setIsShow] = useState(false);
 
   const dispatch = useDispatch();
   
@@ -31,6 +31,7 @@ export const Search = (): ReactElement => {
 
   const handleClick = (event: BaseSyntheticEvent): void => {
     event.preventDefault();
+    setIsShow(!isShow);
 
     dispatch({
       type: FETCH_SEARCH_REQUEST,
@@ -39,13 +40,17 @@ export const Search = (): ReactElement => {
     });
   };
 
-  const DetailPage = () => {
-    const results = search.result && search.result!.results[0];
-    const details = createDetails(results as any);
-    console.log(details);
+  const handleHideDialog = () => {
+    setIsShow(!isShow);
+  };
+
+  const Modal = () => {
+    const results = search.result.results[0];
+    const details = createDetails(results);
 
     return (
-      <div className="detailPage">
+      <div className="modal">
+        <span className="close" onClick={handleHideDialog}>X</span>
         <table>
           <tbody>
             {
@@ -81,7 +86,7 @@ export const Search = (): ReactElement => {
         type="button"
         value="Search"
         onClick={handleClick}></input>
-      {search.result ? <DetailPage /> : null}
+      {isShow ? <Modal /> : null}
     </div>
   );
 };
