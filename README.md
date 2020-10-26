@@ -3,7 +3,7 @@
 
 In the project directory, you can run:
 
-After clone th repo:
+After clone the repo:
 ### `npm install`
 
 And next:
@@ -12,8 +12,6 @@ And next:
 
 Runs the app in the development mode.<br />
 Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
-
-The page will reload if you make edits.
 
 ### `npm test`
 
@@ -24,6 +22,8 @@ Launches the test runner.
 Builds the app.
 
 ### `npm run watch`
+
+The page will reload if you make edits.
 
 ### `npm run lint`
 
