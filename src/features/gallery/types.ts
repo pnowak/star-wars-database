@@ -3,6 +3,11 @@ export const FETCH_ALL_STARTED = 'FETCH_ALL_STARTED';
 export const FETCH_ALL_SUCCEEDED = 'FETCH_ALL_SUCCEEDED';
 export const FETCH_FAILED = 'FETCH_FAILED';
 
+export type CardProps = {
+  category: string,
+  name: string
+};
+
 export type CommonAttributes = {
     name: string,
     url: string,

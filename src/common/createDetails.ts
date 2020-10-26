@@ -1,4 +1,4 @@
-import { FilmAttributes, CommonAttributes } from '../app/types';
+import { FilmAttributes, CommonAttributes } from '../features/gallery/types';
 
 type detail = {
   [key: string]: string | string[]

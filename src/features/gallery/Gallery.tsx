@@ -1,16 +1,15 @@
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, BrowserRouter as Router, Route, useLocation } from 'react-router-dom';
-import { FETCH_ALL_REQUEST, FilmAttributes, CommonAttributes } from '../../app/types';
-import { RootState } from '../../app/index';
-import { Card } from '../../common/Card';
-import { createDetails } from '../../common/createDetails';
-import { Error } from '../../common/Error';
-import { Loading } from '../../common/Loading';
+import { Link, BrowserRouter as Router, Route } from 'react-router-dom';
+import { FETCH_ALL_REQUEST, FilmAttributes, CommonAttributes } from './types';
+import { RootState } from '../../app/rootReducers';
+import { Card } from './Card';
+import { DetailPage } from '../../common/DetailPage';
+import { Error } from './Error';
+import { Loading } from './Loading';
 
 export const Gallery = (): ReactElement => {
   const {films, people, planets, species, starships, vehicles, isLoading, error} = useSelector((state: RootState) => state.films);
-  const { filter } = useSelector((state: RootState) => state);
 
   const dispatch = useDispatch();
 
@@ -119,28 +118,6 @@ export const Gallery = (): ReactElement => {
           </li>
         ))}
       </>
-    );
-  };
-
-  const DetailPage = () => {
-    const { state } = useLocation<FilmAttributes | CommonAttributes>();
-    const details = createDetails(state);
-
-    return (
-      <div className="detailPage">
-        <table>
-          <tbody>
-            {
-              details.map(item => (
-                <tr key={Object.keys(item)[0]}>
-                  <td>{Object.keys(item)[0]}</td>
-                  <td>{Object.values(item)[0]}</td>
-                </tr>
-              ))
-            }
-          </tbody>
-        </table>
-      </div>
     );
   };
 

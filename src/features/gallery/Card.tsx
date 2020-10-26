@@ -1,9 +1,5 @@
 import React, { ReactElement } from 'react';
-
-type CardProps = {
-  category: string,
-  name: string
-}
+import { CardProps } from './types';
 
 export const Card = ({ category, name }: CardProps): ReactElement => (
   <div>

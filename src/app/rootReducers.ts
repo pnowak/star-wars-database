@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
-import { fetchReducer } from './fetchReducer';
+import { fetchReducer } from '../features/gallery/fetchReducer';
 import { filterReducer } from '../features/categories/filterReducer';
+import { fetchSearchReducer } from '../features/search/fetchSearchReducer';
 
 export const rootReducer = combineReducers({
   error: fetchReducer,
@@ -12,7 +13,8 @@ export const rootReducer = combineReducers({
   species: fetchReducer,
   starships: fetchReducer,
   vehicles: fetchReducer,
-  filter: filterReducer
+  filter: filterReducer,
+  search: fetchSearchReducer
 })
 
 export type RootState = ReturnType<typeof rootReducer>

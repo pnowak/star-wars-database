@@ -1,13 +1,7 @@
 import { put, all, call } from 'redux-saga/effects';
-import { FETCH_ALL_STARTED, FETCH_ALL_SUCCEEDED, FETCH_FAILED } from './types';
 import { SagaIterator } from '@redux-saga/core';
-
-const fetchJSON = async (input: string) => {
-  const res = await fetch(input);
-  const data = await res.json();
-
-  return data;
-};
+import { FETCH_ALL_STARTED, FETCH_ALL_SUCCEEDED, FETCH_FAILED } from './types';
+import { fetchJSON} from '../../common/fetchJSON';
 
 export function* fetchAll(): SagaIterator {
   yield put({ type: FETCH_ALL_STARTED });
