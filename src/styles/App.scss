@@ -1,0 +1,152 @@
+$font-stack: 'Play', sans-serif;;
+$primary-color: #999999;
+$primary-bg-color: #151515;
+$list-style-none: none;
+$base-font-size: 1rem;
+
+html, body {
+  background-color: $primary-bg-color;
+  font: $base-font-size $font-stack;
+  color: $primary-color;
+}
+
+ul, ol {
+  list-style: $list-style-none;
+  padding: 0;
+  text-align: center;
+}
+
+.logo {
+  display: grid;
+  justify-content: center;  
+  padding: $base-font-size 0;
+  
+  img {
+    max-width: 203px;
+    max-height: 88px;
+  }
+}
+
+.searchBar {
+  text-align: center;
+  margin-left: 50%;
+
+  select, input[type="search"], input[type="button"] {
+    font: $base-font-size $font-stack;
+    border: 1px solid #000000;
+    padding: $base-font-size / 2;
+    margin-bottom: $base-font-size;
+  }
+
+  select {
+    border: none;
+  }
+
+  input[type="search"] {
+    width: 20%;
+  }
+
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: $primary-color;
+    color: $primary-bg-color;
+    padding: 1% 10%;
+    z-index: 1;
+
+    .close {
+      display: inline-block;
+      border: 2px solid $primary-bg-color;
+      font-size: $base-font-size;
+      cursor: pointer;
+    }
+
+    table {
+      text-align: left;
+      line-height: $base-font-size * 1.5;
+      width: 60%;
+
+      tr > td {
+        vertical-align: top;
+      }
+    }
+  }
+}
+
+.category-list {
+
+  li {
+    display: inline-block;
+    padding: $base-font-size;
+    margin-bottom: $base-font-size;
+    color: $primary-color;
+    font-size: $base-font-size * 2;
+  }
+
+  li:first-letter {
+    text-transform: capitalize;
+  }
+
+  li.active {
+    border-bottom: 4px solid #e15021;
+  }
+}
+
+.gallery {
+  margin: 0 10%;
+
+  ol {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+    width: 100%;
+    
+    li {
+      background-color: $primary-color;
+      display: inline-block;
+      margin-bottom: $base-font-size;
+      font-size: $base-font-size;
+      
+
+      a {
+        color: $primary-bg-color;
+        text-align: center;
+
+        div {
+          height: 100px;
+
+          div {
+            font-size: $base-font-size * 2;
+            font-weight: 700;
+          }
+
+          span {
+            display: block;
+            background-color: $primary-color;
+            color: $primary-bg-color;
+          }
+        }
+      }
+    }
+  }
+
+  .detailPage {
+    margin-top: $base-font-size * 2;
+    font-weight: 700;
+    margin: 0 10%;
+
+    table {
+      text-align: left;
+      line-height: $base-font-size * 1.5;
+
+      tr > td {
+        vertical-align: top;
+      }
+    }
+  }
+}

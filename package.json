@@ -32,10 +32,12 @@
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
     "@types/react-redux": "^7.1.9",
+    "@types/webfontloader": "^1.6.32",
     "@typescript-eslint/eslint-plugin": "^4.3.0",
     "@typescript-eslint/parser": "^4.3.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
+    "css-loader": "^4.2.2",
     "eslint": "^7.10.0",
     "eslint-plugin-babel": "^5.3.1",
     "eslint-plugin-react": "^7.20.6",
@@ -43,6 +45,9 @@
     "eslint-plugin-unicorn": "^22.0.0",
     "expect-redux": "^5.0.3",
     "jest": "^26.2.2",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^10.0.1",
+    "style-loader": "^1.2.1",
     "ts-loader": "^8.0.4",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
@@ -64,6 +69,12 @@
     "redux-saga": "^1.1.3",
     "save-dev": "0.0.1-security",
     "ts-jest": "^26.4.1",
-    "typescript": "^4.0.3"
+    "typescript": "^4.0.3",
+    "webfontloader": "^1.6.28"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "<rootDir>/src/styles/__mocks__/styleMock.ts"
+    }
   }
 }
